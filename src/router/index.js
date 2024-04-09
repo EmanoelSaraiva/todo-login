@@ -24,7 +24,12 @@ const routes = [
   {
     path: "/todoView",
     name: "todoView",
-    component: () => import("../views/TodoView.vue"),
+    component: () => import("../views/Todos/TodoView.vue"),
+  },
+  {
+    path: "/todosView",
+    name: "todosView",
+    component: () => import("../views/Todos/TodosView.vue"),
   },
 ];
 
