@@ -8,13 +8,19 @@ export default createStore({
         password: "adm123",
       },
     ],
-    todoList: [],
+    todoList: [
+      { id: 1, content: "Hello World", finished: true },
+      { id: 2, content: "Estudar Vuetify", finished: false },
+    ],
   },
   getters: {},
   mutations: {
     storeUser(state, data) {
       state.user.push(data);
-      console.log(state.user);
+    },
+
+    addTodo(state, data) {
+      state.todoList.push(data);
     },
   },
   actions: {},
