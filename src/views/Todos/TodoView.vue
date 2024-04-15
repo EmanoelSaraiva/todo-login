@@ -48,7 +48,7 @@ export default {
 .card {
   color: #fff;
   min-width: 200px;
-  max-height: 300px;
+  max-height: 70px;
   padding: 0 25px 0 25px;
   margin: 2%;
   background-color: #6d30a7;

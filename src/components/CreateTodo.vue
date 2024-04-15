@@ -13,18 +13,15 @@ export default {
   data() {
     return {
       todo: {
-        id: 0,
         content: "",
-        finished: false,
       },
     };
   },
   methods: {
     onSubmit() {
       const verifCont = this.todo.content;
-      console.log(verifCont);
       if (verifCont.trim()) {
-        this.$store.commit("addTodo", this.todo);
+        this.$store.commit("addTodo", this.todo.content);
       } else {
         alert("Nessessario enviar nome da tarefa");
       }
@@ -47,5 +44,6 @@ input {
   background: transparent;
   border: none;
   border-bottom: 1px solid #6d30a7;
+  color: white;
 }
 </style>
