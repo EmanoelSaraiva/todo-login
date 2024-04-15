@@ -7,16 +7,29 @@
 </template>
 
 <style>
-#app,
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  height: 100vh;
+  width: 100vw;
+}
+
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #001;
+  background-image: url("../public/background/wp5116278-anime-one-piece-pictures-wallpapers.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   width: 100vw;
+  justify-content: center;
+  align-items: center;
 }
 
 nav {

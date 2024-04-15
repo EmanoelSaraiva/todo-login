@@ -3,8 +3,7 @@
     <form class="form" @submit.prevent="onSubmit">
       <h1>Login</h1>
       <label for="email"
-        ><span>E-mail</span>
-        <input type="email" id="email" v-model="user.email"
+        ><span>E-mail</span> <input type="text" id="email" v-model="user.email"
       /></label>
 
       <label for="password">
@@ -16,7 +15,7 @@
     </form>
   </div>
 
-  <div class="second" v-if="logout">
+  <div class="second" v-else>
     <form class="form" @submit.prevent="onSign">
       <h1>Cadastrar</h1>
       <label for="email">
@@ -42,16 +41,18 @@ export default {
         password: "",
       },
       login: true,
-      logout: false,
     };
   },
   methods: {
-    onSubmit() {
-      if (!this.user.email || !this.user.password) {
-        console.log("Insira email e senha");
-        return;
-      } else {
-        console.log("Login " + this.user.email, "Senha " + this.user.password);
+    async onSubmit() {
+      try {
+        const result = await this.$store.dispatch("login", this.user);
+
+        if (result === 200) {
+          this.$router.push("/TodosView");
+        }
+      } catch (error) {
+        return error;
       }
     },
     onSign() {
@@ -59,25 +60,14 @@ export default {
         alert("Email ou senha invalidos");
         return;
       } else {
-        const newUser = {
-          email: this.user.email,
-          password: this.user.password,
-        };
-        this.$store.commit("storeUser", newUser);
+        this.$store.commit("storeUser", this.user);
         this.user.email = "";
         this.user.password = "";
         this.login = true;
-        this.logout = false;
       }
     },
     onVisible() {
-      if (this.login) {
-        this.login = false;
-        this.logout = true;
-      } else {
-        this.login = true;
-        this.logout = false;
-      }
+      this.login = !this.login;
     },
   },
 };
@@ -86,7 +76,7 @@ export default {
 <style scoped>
 .first {
   display: inline-block;
-  background-color: white;
+  background-color: rgba(252, 252, 252, 0.493);
   box-shadow: 0 19px 38px black, 0 15px 12px rgba(0, 0, 0, 0.22);
   border-radius: 25px;
   width: 40%;
@@ -94,7 +84,7 @@ export default {
 
 .second {
   display: inline-block;
-  background-color: white;
+  background-color: rgba(252, 252, 252, 0.493);
   box-shadow: 0 19px 38px black, 0 15px 12px rgba(0, 0, 0, 0.22);
   border-radius: 25px;
   width: 40%;
