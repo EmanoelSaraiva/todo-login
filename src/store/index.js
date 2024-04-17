@@ -23,13 +23,19 @@ export default createStore({
     isLoggedIn(state) {
       return state.user !== null;
     },
+    returnIdTodo(state) {
+      console.log("entrous");
+      return Math.max(...state.todoList.map((todo) => todo.id));
+    },
   },
   mutations: {
     storeUser(state, data) {
       state.user.push(data);
     },
-    addTodo(state, data) {
-      state.todoList.push(data);
+    addTodo(state, content) {
+      const newId = state.todoList.length + 1;
+
+      state.todoList.push({ id: newId, content, finished: false });
     },
 
     finishedTodo(state, data) {
