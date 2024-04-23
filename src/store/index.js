@@ -34,6 +34,7 @@ export default createStore({
     },
     addTodo(state, content) {
       const newId = state.todoList.length + 1;
+      console.log(newId)
 
       state.todoList.push({ id: newId, content, finished: false });
     },

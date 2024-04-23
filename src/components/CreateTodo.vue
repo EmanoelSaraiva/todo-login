@@ -22,6 +22,7 @@ export default {
       const verifCont = this.todo.content;
       if (verifCont.trim()) {
         this.$store.commit("addTodo", this.todo.content);
+        this.todo.content = "";
       } else {
         alert("Nessessario enviar nome da tarefa");
       }
